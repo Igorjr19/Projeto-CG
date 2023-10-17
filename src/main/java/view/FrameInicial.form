@@ -8,6 +8,11 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Arquivo"/>
           </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="img">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Imagem"/>
+          </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="carregarIMG">
               <Properties>
@@ -17,18 +22,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="carregarIMGActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="converterRGBparaHSL">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Converter RGB para HSL"/>
-              </Properties>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="img">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Imagem"/>
-          </Properties>
-          <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="negativaIMG">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Negativar"/>
@@ -44,6 +37,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="desenharIMGActionPerformed"/>
               </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="converterRGBparaHSL">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Converter RGB para HSL"/>
+              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -69,6 +67,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Bresenham"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="retaBresenhamActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

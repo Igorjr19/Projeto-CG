@@ -2,22 +2,35 @@ package View;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import view.DialogDesenhos;
+import view.DialogImagem;
 
 /**
  *
  * @author Lucas Ikeda e Igor Rodrigues
  */
-public class Screen extends javax.swing.JFrame {
-
+public class FrameInicial extends javax.swing.JFrame implements ActionListener {
+    
+    
     /**
      * Creates new form Screen
      */
-    public Screen() {
+    public FrameInicial() {
         initComponents();
+    }
+
+    public void actionPerformed(ActionEvent evt) {
+        if (evt.getSource() == carregarIMG) {
+
+        }
     }
 
     /**
@@ -32,11 +45,11 @@ public class Screen extends javax.swing.JFrame {
         titulo = new javax.swing.JLabel();
         menu = new javax.swing.JMenuBar();
         arquivo = new javax.swing.JMenu();
-        carregarIMG = new javax.swing.JMenuItem();
-        converterRGBparaHSL = new javax.swing.JMenuItem();
         img = new javax.swing.JMenu();
+        carregarIMG = new javax.swing.JMenuItem();
         negativaIMG = new javax.swing.JMenuItem();
         desenharIMG = new javax.swing.JMenuItem();
+        converterRGBparaHSL = new javax.swing.JMenuItem();
         retas = new javax.swing.JMenu();
         retaLinear = new javax.swing.JMenuItem();
         retaParametrica = new javax.swing.JMenuItem();
@@ -56,6 +69,9 @@ public class Screen extends javax.swing.JFrame {
         titulo.setText("Trabalho Computação Gráfica");
 
         arquivo.setText("Arquivo");
+        menu.add(arquivo);
+
+        img.setText("Imagem");
 
         carregarIMG.setText("Carregar");
         carregarIMG.addActionListener(new java.awt.event.ActionListener() {
@@ -63,14 +79,7 @@ public class Screen extends javax.swing.JFrame {
                 carregarIMGActionPerformed(evt);
             }
         });
-        arquivo.add(carregarIMG);
-
-        converterRGBparaHSL.setText("Converter RGB para HSL");
-        arquivo.add(converterRGBparaHSL);
-
-        menu.add(arquivo);
-
-        img.setText("Imagem");
+        img.add(carregarIMG);
 
         negativaIMG.setText("Negativar");
         negativaIMG.addActionListener(new java.awt.event.ActionListener() {
@@ -88,6 +97,9 @@ public class Screen extends javax.swing.JFrame {
         });
         img.add(desenharIMG);
 
+        converterRGBparaHSL.setText("Converter RGB para HSL");
+        img.add(converterRGBparaHSL);
+
         menu.add(img);
 
         retas.setText("Retas");
@@ -104,6 +116,11 @@ public class Screen extends javax.swing.JFrame {
         retas.add(retaParametrica);
 
         retaBresenham.setText("Bresenham");
+        retaBresenham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retaBresenhamActionPerformed(evt);
+            }
+        });
         retas.add(retaBresenham);
 
         menu.add(retas);
@@ -160,10 +177,6 @@ public class Screen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void carregarIMGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregarIMGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_carregarIMGActionPerformed
-
     private void negativaIMGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_negativaIMGActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_negativaIMGActionPerformed
@@ -182,10 +195,36 @@ public class Screen extends javax.swing.JFrame {
 
     private void jMenuItemCasinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCasinhaActionPerformed
         // TODO add your handling code here:
-        Projecao3D projecao = new Projecao3D();
+        DialogCasinha projecao = new DialogCasinha(this, true);
         projecao.setLocationRelativeTo(this);
         projecao.setVisible(true);
     }//GEN-LAST:event_jMenuItemCasinhaActionPerformed
+
+    private void retaBresenhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retaBresenhamActionPerformed
+        // TODO add your handling code here:
+        DialogDesenhos bresenham = new DialogDesenhos(this, true);
+        bresenham.setLocationRelativeTo(this);
+        bresenham.setVisible(true);
+    }//GEN-LAST:event_retaBresenhamActionPerformed
+
+    private void carregarIMGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carregarIMGActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+
+        fileChooser.setDialogTitle("Selecione uma imagem para abrir");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(".jpg", "jpg", "jpeg");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        fileChooser.setFileFilter(filter);
+
+        int resposta = fileChooser.showOpenDialog(this);
+        if(resposta == JFileChooser.APPROVE_OPTION) {
+            String imgPath = fileChooser.getSelectedFile().getPath();
+            DialogImagem dialogImg = new DialogImagem(this, true, imgPath);
+            dialogImg.setLocationRelativeTo(this);
+            dialogImg.setVisible(true);
+        }
+    }//GEN-LAST:event_carregarIMGActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,13 +243,13 @@ public class Screen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Projecao3D.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogCasinha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Projecao3D.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogCasinha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Projecao3D.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogCasinha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Projecao3D.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DialogCasinha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -221,14 +260,14 @@ public class Screen extends javax.swing.JFrame {
                 try {
                     UIManager.setLookAndFeel(new FlatIntelliJLaf());
                 } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 UIManager.getLookAndFeelDefaults().put("defaultFont", new Font("Comic Sans MS", Font.PLAIN, 14));
-                new Screen().setVisible(true);
+                new FrameInicial().setVisible(true);
             }
-            
+
         });
-    }  
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu arquivo;
     private javax.swing.JMenuItem carregarIMG;

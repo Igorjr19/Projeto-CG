@@ -4,12 +4,13 @@ package View;
  *
  * @author Lucas Ikeda e Igor Rodrigues
  */
-public class Projecao3D extends javax.swing.JDialog {
+public class DialogCasinha extends javax.swing.JDialog {
 
     /**
      * Creates new form Projecao3D
      */
-    public Projecao3D() {
+    public DialogCasinha(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 

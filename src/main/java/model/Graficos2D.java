@@ -4,7 +4,73 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 public class Graficos2D {
-    
+
+    public static ArrayList<Point> drawLineLinear(Point a, Point b) {
+        ArrayList<Point> linePoints = new ArrayList<Point>();
+        int x1 = a.x, x2 = b.x, y1 = a.y, y2 = b.y;
+        int deltaX = Math.abs(x2 - x1);
+        int deltaY = Math.abs(y2 - y1);
+        int x = y1, y = y1;
+
+        if (x1 == x2) {
+            for (int i = y1; i <= y2; i++) {
+                y = i;
+                Point p = new Point(x1, y);
+                linePoints.add(p);
+            }
+            return linePoints;
+        }
+        
+        if(y1 == y2){
+            for (int i = x1; i <= x2; i++) {
+                x = i;
+                Point p = new Point(x, y1);
+                linePoints.add(p);
+            }
+            return linePoints;
+        }
+
+        double m =  (double) (y2 - y1) / (double) (x2 - x1);
+        
+        if (deltaX > deltaY) { 
+            if (x1 > x2) {
+                int aux = x1;
+                x1 = x2;
+                x2 = aux;
+                aux = y1;
+                y1 = y2;
+                y2 = aux;
+                x = x1;
+                y = y1;
+            }
+            for (int i = x1; i <= x2; i++) {
+                x = i;
+                y = (int) (m * (x - x1) + y1);
+                Point p = new Point(x, y);
+                System.out.println(p);
+                linePoints.add(p);
+            }
+        } else {
+            if(y1 > y2){
+                int aux = y1;
+                y1 = y2;
+                y2 = aux;
+                aux = x1;
+                x1 = x2;
+                x2 = aux;
+                x = x1;
+                y = y1;
+            }
+            for (int i = y1; i <= y2; i++) {
+                x = (int) ((y - y1) / m + x1);
+                y = i;
+                Point p = new Point(x, y);
+                linePoints.add(p);
+            }
+        }
+        return linePoints;
+    }
+
     private static ArrayList<Point> drawLineLow(Point a, Point b) {
         ArrayList<Point> linePoints = new ArrayList<Point>();
         int x1 = a.x, x2 = b.x, y1 = a.y, y2 = b.y;

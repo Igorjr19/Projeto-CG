@@ -5,15 +5,33 @@ package view;
  * @author Igor J Rodrigues
  */
 public class DialogDesenhos extends javax.swing.JDialog {
+    private Panel2D panel;
     /**
      * Creates new form DialogDesenhos
      */
-    public DialogDesenhos(java.awt.Frame parent, boolean modal, String title) {
+    public DialogDesenhos(java.awt.Frame parent, boolean modal, String title, String tipo) {
         super(parent, modal);
         initComponents();
         this.setTitle(title);
+        criarPanel(tipo);
     }
 
+    private void criarPanel(String tipo){
+        switch (tipo) {
+            case "bresenham" -> {
+                panel = new PanelBresenhamLine();   
+                panel.setSize(this.getSize());
+                this.add(panel);
+            }
+            case "linear" -> {
+                panel = new PanelLineLinear();   
+                panel.setSize(this.getSize());
+                this.add(panel);
+            }
+            default -> throw new AssertionError();
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -23,43 +41,23 @@ public class DialogDesenhos extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelBresenhamLine1 = new view.PanelBresenhamLine();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
-
-        javax.swing.GroupLayout panelBresenhamLine1Layout = new javax.swing.GroupLayout(panelBresenhamLine1);
-        panelBresenhamLine1.setLayout(panelBresenhamLine1Layout);
-        panelBresenhamLine1Layout.setHorizontalGroup(
-            panelBresenhamLine1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
-        );
-        panelBresenhamLine1Layout.setVerticalGroup(
-            panelBresenhamLine1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelBresenhamLine1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelBresenhamLine1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 402, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private view.PanelBresenhamLine panelBresenhamLine1;
     // End of variables declaration//GEN-END:variables
 }

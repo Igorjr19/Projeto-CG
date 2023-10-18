@@ -88,7 +88,7 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
 
         retas.setText("Retas");
 
-        retaLinear.setText("Função linear");
+        retaLinear.setText("Função Linear");
         retaLinear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 retaLinearActionPerformed(evt);
@@ -96,7 +96,7 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         });
         retas.add(retaLinear);
 
-        retaParametrica.setText("Função paramétrica");
+        retaParametrica.setText("Função Paramétrica");
         retas.add(retaParametrica);
 
         retaBresenham.setText("Bresenham");
@@ -163,6 +163,9 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
 
     private void retaLinearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retaLinearActionPerformed
         // TODO add your handling code here:
+        DialogDesenhos bresenham = new DialogDesenhos(this, true, "Desenhando Retas a partir da Função Linear", "linear");
+        bresenham.setLocationRelativeTo(this);
+        bresenham.setVisible(true);
     }//GEN-LAST:event_retaLinearActionPerformed
 
     private void circParametricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_circParametricaActionPerformed
@@ -178,7 +181,7 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
 
     private void retaBresenhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retaBresenhamActionPerformed
         // TODO add your handling code here:
-        DialogDesenhos bresenham = new DialogDesenhos(this, true, "Desenhando Retas com o Algoritmo de Bresenham");
+        DialogDesenhos bresenham = new DialogDesenhos(this, true, "Desenhando Retas com o Algoritmo de Bresenham", "bresenham");
         bresenham.setLocationRelativeTo(this);
         bresenham.setVisible(true);
     }//GEN-LAST:event_retaBresenhamActionPerformed

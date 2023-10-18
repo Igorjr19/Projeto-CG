@@ -34,7 +34,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="retaLinear">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Fun&#xe7;&#xe3;o linear"/>
+                <Property name="text" type="java.lang.String" value="Fun&#xe7;&#xe3;o Linear"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="retaLinearActionPerformed"/>
@@ -42,7 +42,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="retaParametrica">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Fun&#xe7;&#xe3;o param&#xe9;trica"/>
+                <Property name="text" type="java.lang.String" value="Fun&#xe7;&#xe3;o Param&#xe9;trica"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="retaBresenham">

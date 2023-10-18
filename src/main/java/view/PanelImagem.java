@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -38,8 +39,8 @@ public class PanelImagem extends javax.swing.JPanel {
         repaint();
         setVisible(true);
     }
-    
-    private void restaurar(){
+
+    private void restaurar() {
         try {
             imgBuff.flush();
             abrirImagem(imgPath);
@@ -47,26 +48,26 @@ public class PanelImagem extends javax.swing.JPanel {
             Logger.getLogger(PanelImagem.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void abrirImagem(String imgPath) throws IOException {
         File imageFile = new File(imgPath);
         Image img = ImageIO.read(imageFile);
-        imgBuff = toBufferedImage(img);
+        Image dimg = img.getScaledInstance(400, 400, Image.SCALE_SMOOTH);
+        imgBuff = toBufferedImage(dimg);
 
         Image imgOg = ImageIO.read(imageFile);
     }
-    
-    private void reload(){
+
+    private void reload() {
         this.remove(imageLabel);
         exibirImagem();
         imageLabel.repaint();
     }
-    
+
     private void exibirImagem() {
         imageLabel = new JLabel();
         imageLabel.setSize(400, 400);
-        Image dimg = imgBuff.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon iconImage = new ImageIcon(dimg);
+        ImageIcon iconImage = new ImageIcon(imgBuff);
         imageLabel.setIcon(iconImage);
         this.add(imageLabel);
         this.setLayout(null);
@@ -109,8 +110,8 @@ public class PanelImagem extends javax.swing.JPanel {
             }
         }
     }
-    
-    public void canal(String canal){
+
+    public void canal(String canal) {
         for (int x = 0; x < imgBuff.getWidth(); x++) {
             for (int y = 0; y < imgBuff.getHeight(); y++) {
                 int rgb = imgBuff.getRGB(x, y);
@@ -119,18 +120,27 @@ public class PanelImagem extends javax.swing.JPanel {
                 int blue = rgb & 0x000000ff;
 
                 int canalEscolhido = rgb;
-                if (canal.equals("r")){
-                    canalEscolhido = (red   << 16) | (red   << 8) | red;
+                if (canal.equals("r")) {
+                    canalEscolhido = (red << 16) | (red << 8) | red;
                 }
-                if (canal.equals("g")){
+                if (canal.equals("g")) {
                     canalEscolhido = (green << 16) | (green << 8) | green;
                 }
-                if (canal.equals("b")){
-                    canalEscolhido = (blue  << 16) | (blue  << 8) | blue;
+                if (canal.equals("b")) {
+                    canalEscolhido = (blue << 16) | (blue << 8) | blue;
                 }
                 imgBuff.setRGB(x, y, canalEscolhido);
             }
         }
+    }
+
+    public int[] getPixel(Point p) {
+        int x = p.x, y = p.y;
+        int rgb = imgBuff.getRGB(x, y);
+        int red = (rgb & 0x00ff0000) >> 16;
+        int green = (rgb & 0x0000ff00) >> 8;
+        int blue = rgb & 0x000000ff;
+        return new int[]{red, green, blue};
     }
 
     public static BufferedImage toBufferedImage(Image img) {
@@ -176,7 +186,7 @@ public class PanelImagem extends javax.swing.JPanel {
                 reload();
                 break;
             }
-            default  -> {
+            default -> {
                 return;
             }
         }

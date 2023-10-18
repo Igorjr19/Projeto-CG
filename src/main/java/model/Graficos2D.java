@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 public class Graficos2D {
-
+    
     private static ArrayList<Point> drawLineLow(Point a, Point b) {
         ArrayList<Point> linePoints = new ArrayList<Point>();
         int x1 = a.x, x2 = b.x, y1 = a.y, y2 = b.y;
@@ -66,7 +66,7 @@ public class Graficos2D {
     }
 
     // Algoritmo de Bresenham Generalizado
-    public static ArrayList<Point> drawLine(Point a, Point b) {
+    public static ArrayList<Point> drawLineBresenham(Point a, Point b) {
         ArrayList<Point> linePoints;
         int x1 = a.x, x2 = b.x, y1 = a.y, y2 = b.y;
 

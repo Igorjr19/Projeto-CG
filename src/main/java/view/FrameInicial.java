@@ -124,7 +124,7 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         });
         circunferencia.add(circEq);
 
-        circParametrica.setText("Função paramétrica");
+        circParametrica.setText("Função Paramétrica");
         circParametrica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 circParametricaActionPerformed(evt);
@@ -133,6 +133,11 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         circunferencia.add(circParametrica);
 
         circBresenham.setText("Bresenham");
+        circBresenham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                circBresenhamActionPerformed(evt);
+            }
+        });
         circunferencia.add(circBresenham);
 
         menu.add(circunferencia);
@@ -180,6 +185,9 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
 
     private void circParametricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_circParametricaActionPerformed
         // TODO add your handling code here:
+        DialogDesenhos circleParametric = new DialogDesenhos(this, true, "Desenhando Cricunferências a partir da equação paramétrica", "circleParametric");
+        circleParametric.setLocationRelativeTo(this);
+        circleParametric.setVisible(true);
     }//GEN-LAST:event_circParametricaActionPerformed
 
     private void jMenuItemCasinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCasinhaActionPerformed
@@ -235,6 +243,13 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         circNormal.setLocationRelativeTo(this);
         circNormal.setVisible(true);
     }//GEN-LAST:event_circEqActionPerformed
+
+    private void circBresenhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_circBresenhamActionPerformed
+        // TODO add your handling code here:
+        DialogDesenhos circNormal = new DialogDesenhos(this, true, "Desenhando Circunferências com o Algoritmo de Bresenham", "circleBresenham");
+        circNormal.setLocationRelativeTo(this);
+        circNormal.setVisible(true);
+    }//GEN-LAST:event_circBresenhamActionPerformed
 
     /**
      * @param args the command line arguments

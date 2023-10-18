@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 public class Graficos2D {
+
     public static ArrayList<Point> drawLineLinear(Point a, Point b) {
         ArrayList<Point> linePoints = new ArrayList<Point>();
         int x1 = a.x, x2 = b.x, y1 = a.y, y2 = b.y;
@@ -19,8 +20,8 @@ public class Graficos2D {
             }
             return linePoints;
         }
-        
-        if(y1 == y2){
+
+        if (y1 == y2) {
             for (int i = x1; i <= x2; i++) {
                 x = i;
                 Point p = new Point(x, y1);
@@ -29,9 +30,9 @@ public class Graficos2D {
             return linePoints;
         }
 
-        double m =  (double) (y2 - y1) / (double) (x2 - x1);
-        
-        if (deltaX > deltaY) { 
+        double m = (double) (y2 - y1) / (double) (x2 - x1);
+
+        if (deltaX > deltaY) {
             if (x1 > x2) {
                 int aux = x1;
                 x1 = x2;
@@ -49,7 +50,7 @@ public class Graficos2D {
                 linePoints.add(p);
             }
         } else {
-            if(y1 > y2){
+            if (y1 > y2) {
                 int aux = y1;
                 y1 = y2;
                 y2 = aux;
@@ -149,8 +150,8 @@ public class Graficos2D {
         }
         return linePoints;
     }
-    
-    public static ArrayList<Point> drawLineParametric(Point a, Point b){
+
+    public static ArrayList<Point> drawLineParametric(Point a, Point b) {
         ArrayList<Point> linePoints = new ArrayList();
         for (double i = 0; i <= 1; i += 0.01) {
             System.out.println("i: " + i);
@@ -172,6 +173,24 @@ public class Graficos2D {
             Point p2 = new Point(a.x + xi, a.y - y);
             linePoints.add(p2);
         }
+        return linePoints;
+    }
+
+    public static ArrayList<Point> drawCircleParametric(Point a, Point b) {
+        ArrayList<Point> linePoints = new ArrayList();
+        int r = (int) Math.sqrt(Math.pow((b.x - a.x), 2) + Math.pow((b.y - a.y), 2));
+        for (double i = 0; i < 6.28; i += 0.01) {
+            int x = (int) (r * Math.cos(i));
+            int y = (int) (r * Math.sin(i));
+            Point p = new Point(x + a.x, y + a.y);
+            linePoints.add(p);
+        }
+        return linePoints;
+    }
+
+    public static ArrayList<Point> drawCircleBresenham(Point a, Point b) {
+        ArrayList<Point> linePoints = new ArrayList();
+        //TODO
         return linePoints;
     }
 }

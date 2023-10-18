@@ -9,6 +9,7 @@ view\Panel2D.class
 view\FrameInicial.class
 view\DialogRGBtoHSV$1.class
 view\DialogCasinha$1.class
+view\PanelCircleParametric.class
 view\DialogImagem.class
 view\DialogImagem$5.class
 view\DialogCasinha$6.class

@@ -38,6 +38,16 @@ public class DialogDesenhos extends javax.swing.JDialog {
                 panel.setSize(this.getSize());
                 this.add(panel);
             }
+            case "circleParametric" -> {
+                panel = new PanelCircleParametric();   
+                panel.setSize(this.getSize());
+                this.add(panel);
+            }
+            case "circleBresenham" -> {
+                panel = new PanelCircleBresenham();   
+                panel.setSize(this.getSize());
+                this.add(panel);
+            }
             default -> throw new AssertionError();
         }
     }

@@ -5,7 +5,7 @@ package model;
  * @author Igor J Rodrigues
  */
 public class Extra {
-
+    //RGB <--> HSV: seguindo o exemplo do Paint do Windows 11
     public static double[] RGBtoHSV(double r, double g, double b) {
         //Normaliza os valores do RGB no intervalo [0, 1]
         double nR = r / 255;

@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 public class Graficos2D {
-
     public static ArrayList<Point> drawLineLinear(Point a, Point b) {
         ArrayList<Point> linePoints = new ArrayList<Point>();
         int x1 = a.x, x2 = b.x, y1 = a.y, y2 = b.y;
@@ -47,7 +46,6 @@ public class Graficos2D {
                 x = i;
                 y = (int) (m * (x - x1) + y1);
                 Point p = new Point(x, y);
-                System.out.println(p);
                 linePoints.add(p);
             }
         } else {
@@ -148,6 +146,31 @@ public class Graficos2D {
             } else {
                 linePoints = drawLineHigh(a, b);
             }
+        }
+        return linePoints;
+    }
+    
+    public static ArrayList<Point> drawLineParametric(Point a, Point b){
+        ArrayList<Point> linePoints = new ArrayList();
+        for (double i = 0; i <= 1; i += 0.01) {
+            System.out.println("i: " + i);
+            int x = (int) (a.x + (b.x - a.x) * i);
+            int y = (int) (a.y + (b.y - a.y) * i);
+            Point p = new Point(x, y);
+            linePoints.add(p);
+        }
+        return linePoints;
+    }
+
+    public static ArrayList<Point> drawCircleNormal(Point a, Point b) {
+        ArrayList<Point> linePoints = new ArrayList();
+        int r = (int) Math.sqrt(Math.pow((b.x - a.x), 2) + Math.pow((b.y - a.y), 2));
+        for (int xi = -r; xi <= r; xi++) {
+            int y = (int) Math.sqrt(r * r - xi * xi);
+            Point p1 = new Point(a.x + xi, a.y + y);
+            linePoints.add(p1);
+            Point p2 = new Point(a.x + xi, a.y - y);
+            linePoints.add(p2);
         }
         return linePoints;
     }

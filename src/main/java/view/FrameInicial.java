@@ -97,6 +97,11 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         retas.add(retaLinear);
 
         retaParametrica.setText("Função Paramétrica");
+        retaParametrica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retaParametricaActionPerformed(evt);
+            }
+        });
         retas.add(retaParametrica);
 
         retaBresenham.setText("Bresenham");
@@ -112,6 +117,11 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         circunferencia.setText("Circunferências");
 
         circEq.setText("Equação");
+        circEq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                circEqActionPerformed(evt);
+            }
+        });
         circunferencia.add(circEq);
 
         circParametrica.setText("Função paramétrica");
@@ -163,9 +173,9 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
 
     private void retaLinearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retaLinearActionPerformed
         // TODO add your handling code here:
-        DialogDesenhos bresenham = new DialogDesenhos(this, true, "Desenhando Retas a partir da Função Linear", "linear");
-        bresenham.setLocationRelativeTo(this);
-        bresenham.setVisible(true);
+        DialogDesenhos linear = new DialogDesenhos(this, true, "Desenhando Retas a partir da Função Linear", "linear");
+        linear.setLocationRelativeTo(this);
+        linear.setVisible(true);
     }//GEN-LAST:event_retaLinearActionPerformed
 
     private void circParametricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_circParametricaActionPerformed
@@ -211,6 +221,20 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         rgbToHsv.setLocationRelativeTo(this);
         rgbToHsv.setVisible(true);
     }//GEN-LAST:event_RGBtoHSLActionPerformed
+
+    private void retaParametricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retaParametricaActionPerformed
+        // TODO add your handling code here:
+        DialogDesenhos parametric = new DialogDesenhos(this, true, "Desenhando Retas a partir da forma Paramétrica da Reta", "parametric");
+        parametric.setLocationRelativeTo(this);
+        parametric.setVisible(true);
+    }//GEN-LAST:event_retaParametricaActionPerformed
+
+    private void circEqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_circEqActionPerformed
+        // TODO add your handling code here:
+        DialogDesenhos circNormal = new DialogDesenhos(this, true, "Desenhando Circunferências a partir da equação", "circleNormal");
+        circNormal.setLocationRelativeTo(this);
+        circNormal.setVisible(true);
+    }//GEN-LAST:event_circEqActionPerformed
 
     /**
      * @param args the command line arguments

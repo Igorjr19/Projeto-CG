@@ -178,7 +178,7 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
 
     private void retaBresenhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retaBresenhamActionPerformed
         // TODO add your handling code here:
-        DialogDesenhos bresenham = new DialogDesenhos(this, true);
+        DialogDesenhos bresenham = new DialogDesenhos(this, true, "Desenhando Retas com o Algoritmo de Bresenham");
         bresenham.setLocationRelativeTo(this);
         bresenham.setVisible(true);
     }//GEN-LAST:event_retaBresenhamActionPerformed

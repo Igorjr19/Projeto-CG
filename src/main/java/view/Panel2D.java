@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import model.Graficos2D;
 
@@ -10,37 +11,59 @@ import model.Graficos2D;
  *
  * @author Igor J Rodrigues
  */
-public class Panel2D extends javax.swing.JPanel {
+public abstract class Panel2D extends javax.swing.JPanel {
+
     ArrayList<Point> points;
     Point p1;
     Point p2;
-    
-    
     /**
      * Creates new form Panel2D
      */
     public Panel2D() {
         initComponents();
-        
         points = new ArrayList<Point>();
         this.setBackground(Color.white);
-        p1 = new Point(0, 0);
-        p2 = new Point(400, 400);
+        interacaoMouse();
         repaint();
-        setVisible(true);	
+        setVisible(true);
     }
+
+    public abstract ArrayList<Point> desenhar(Point p1, Point p2);
     
+    public void interacaoMouse() {
+        addMouseListener(
+                new java.awt.event.MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e
+            ) {
+                p1 = e.getPoint();
+            }
+        }
+        );
+        addMouseListener(
+                new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e
+            ) {
+                p2 = e.getPoint();
+                points.addAll(desenhar(p1, p2));
+                repaint();
+            }
+        }
+        );
+    }
+
     @Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		if(p1 == null || p2 == null) {
-			return;
-		}
-		g.setColor(Color.black);
-		for(Point p : Graficos2D.drawLine(p1, p2)) {
-			g.fillOval(p.x, p.y, 5, 5);
-		}
-	}
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (p1 == null || p2 == null) {
+            return;
+        }
+        g.setColor(Color.black);
+        for (Point p : points) {
+            g.fillOval(p.x, p.y, 5, 5);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

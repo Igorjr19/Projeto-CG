@@ -12,6 +12,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import view.DialogDesenhos;
 import view.DialogImagem;
+import view.DialogRGBtoHSV;
 
 /**
  *
@@ -44,12 +45,9 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
 
         titulo = new javax.swing.JLabel();
         menu = new javax.swing.JMenuBar();
-        arquivo = new javax.swing.JMenu();
         img = new javax.swing.JMenu();
         carregarIMG = new javax.swing.JMenuItem();
-        negativaIMG = new javax.swing.JMenuItem();
-        desenharIMG = new javax.swing.JMenuItem();
-        converterRGBparaHSL = new javax.swing.JMenuItem();
+        RGBtoHSL = new javax.swing.JMenuItem();
         retas = new javax.swing.JMenu();
         retaLinear = new javax.swing.JMenuItem();
         retaParametrica = new javax.swing.JMenuItem();
@@ -68,12 +66,9 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("Trabalho Computação Gráfica");
 
-        arquivo.setText("Arquivo");
-        menu.add(arquivo);
+        img.setText("Imagem e Cor");
 
-        img.setText("Imagem");
-
-        carregarIMG.setText("Carregar");
+        carregarIMG.setText("Abrir Imagem");
         carregarIMG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 carregarIMGActionPerformed(evt);
@@ -81,24 +76,13 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         });
         img.add(carregarIMG);
 
-        negativaIMG.setText("Negativar");
-        negativaIMG.addActionListener(new java.awt.event.ActionListener() {
+        RGBtoHSL.setText("RGB e HSL");
+        RGBtoHSL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                negativaIMGActionPerformed(evt);
+                RGBtoHSLActionPerformed(evt);
             }
         });
-        img.add(negativaIMG);
-
-        desenharIMG.setText("Desenhar");
-        desenharIMG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                desenharIMGActionPerformed(evt);
-            }
-        });
-        img.add(desenharIMG);
-
-        converterRGBparaHSL.setText("Converter RGB para HSL");
-        img.add(converterRGBparaHSL);
+        img.add(RGBtoHSL);
 
         menu.add(img);
 
@@ -177,14 +161,6 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void negativaIMGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_negativaIMGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_negativaIMGActionPerformed
-
-    private void desenharIMGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desenharIMGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_desenharIMGActionPerformed
-
     private void retaLinearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retaLinearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_retaLinearActionPerformed
@@ -225,6 +201,13 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
             dialogImg.setVisible(true);
         }
     }//GEN-LAST:event_carregarIMGActionPerformed
+
+    private void RGBtoHSLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RGBtoHSLActionPerformed
+        // TODO add your handling code here:
+        DialogRGBtoHSV rgbToHsv = new DialogRGBtoHSV(this, true);
+        rgbToHsv.setLocationRelativeTo(this);
+        rgbToHsv.setVisible(true);
+    }//GEN-LAST:event_RGBtoHSLActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,18 +252,15 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu arquivo;
+    private javax.swing.JMenuItem RGBtoHSL;
     private javax.swing.JMenuItem carregarIMG;
     private javax.swing.JMenuItem circBresenham;
     private javax.swing.JMenuItem circEq;
     private javax.swing.JMenuItem circParametrica;
     private javax.swing.JMenu circunferencia;
-    private javax.swing.JMenuItem converterRGBparaHSL;
-    private javax.swing.JMenuItem desenharIMG;
     private javax.swing.JMenu img;
     private javax.swing.JMenuItem jMenuItemCasinha;
     private javax.swing.JMenuBar menu;
-    private javax.swing.JMenuItem negativaIMG;
     private javax.swing.JMenu projecao3D;
     private javax.swing.JMenuItem retaBresenham;
     private javax.swing.JMenuItem retaLinear;

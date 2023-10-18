@@ -4,44 +4,26 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="menu">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="arquivo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Arquivo"/>
-          </Properties>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="img">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Imagem"/>
+            <Property name="text" type="java.lang.String" value="Imagem e Cor"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="carregarIMG">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Carregar"/>
+                <Property name="text" type="java.lang.String" value="Abrir Imagem"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="carregarIMGActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="negativaIMG">
+            <MenuItem class="javax.swing.JMenuItem" name="RGBtoHSL">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Negativar"/>
+                <Property name="text" type="java.lang.String" value="RGB e HSL"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="negativaIMGActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RGBtoHSLActionPerformed"/>
               </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="desenharIMG">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Desenhar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="desenharIMGActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="converterRGBparaHSL">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Converter RGB para HSL"/>
-              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

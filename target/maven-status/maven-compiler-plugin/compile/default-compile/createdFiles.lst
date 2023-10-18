@@ -3,9 +3,9 @@ view\DialogCasinha$11.class
 view\DialogCasinha$3.class
 view\FrameInicial$3.class
 view\FrameInicial$1.class
-view\FrameInicial$8.class
 view\Panel2D.class
 view\FrameInicial.class
+view\DialogRGBtoHSV$1.class
 view\DialogCasinha$1.class
 view\DialogImagem.class
 view\DialogImagem$5.class
@@ -15,6 +15,7 @@ view\DialogCasinha$5.class
 view\FrameInicial$6.class
 view\DialogImagem$4.class
 view\DialogImagem$2.class
+view\DialogRGBtoHSV.class
 view\DialogCasinha$12.class
 view\FrameInicial$4.class
 view\DialogCasinha$8.class
@@ -23,10 +24,11 @@ view\FrameInicial$2.class
 view\PanelImagem.class
 view\DialogCasinha$2.class
 view\DialogImagem$6.class
+model\Extra.class
 view\DialogCasinha$9.class
 view\FrameInicial$7.class
 view\DialogCasinha$10.class
-model\Imagem.class
+view\DialogRGBtoHSV$2.class
 view\FrameInicial$5.class
 view\DialogCasinha$7.class
 view\DialogDesenhos.class

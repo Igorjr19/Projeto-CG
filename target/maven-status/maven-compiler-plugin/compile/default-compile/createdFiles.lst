@@ -1,4 +1,3 @@
-view\DialogImagem$7.class
 view\DialogCasinha$3.class
 view\FrameInicial$1.class
 view\FrameInicial$8.class
@@ -26,6 +25,7 @@ view\DialogCasinha$4.class
 view\DialogImagem$3.class
 model\Graficos2D.class
 view\DialogCasinha$11.class
+model\Graficos3D.class
 view\FrameInicial$3.class
 view\FrameInicial.class
 view\DialogRGBtoHSV$1.class

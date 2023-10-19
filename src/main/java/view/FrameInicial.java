@@ -52,6 +52,7 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         retaLinear = new javax.swing.JMenuItem();
         retaParametrica = new javax.swing.JMenuItem();
         retaBresenham = new javax.swing.JMenuItem();
+        retaClipping = new javax.swing.JMenuItem();
         circunferencia = new javax.swing.JMenu();
         circEq = new javax.swing.JMenuItem();
         circParametrica = new javax.swing.JMenuItem();
@@ -111,6 +112,14 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
             }
         });
         retas.add(retaBresenham);
+
+        retaClipping.setText("Clipping");
+        retaClipping.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retaClippingActionPerformed(evt);
+            }
+        });
+        retas.add(retaClipping);
 
         menu.add(retas);
 
@@ -251,6 +260,13 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         circNormal.setVisible(true);
     }//GEN-LAST:event_circBresenhamActionPerformed
 
+    private void retaClippingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retaClippingActionPerformed
+        // TODO add your handling code here:
+        DialogDesenhos clipping = new DialogDesenhos(this, true, "Desenhando Retas com Clipping", "clipping");
+        clipping.setLocationRelativeTo(this);
+        clipping.setVisible(true);
+    }//GEN-LAST:event_retaClippingActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -305,6 +321,7 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu projecao3D;
     private javax.swing.JMenuItem retaBresenham;
+    private javax.swing.JMenuItem retaClipping;
     private javax.swing.JMenuItem retaLinear;
     private javax.swing.JMenuItem retaParametrica;
     private javax.swing.JMenu retas;

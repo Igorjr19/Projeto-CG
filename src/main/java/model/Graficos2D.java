@@ -1,7 +1,9 @@
 package model;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Graficos2D {
 
@@ -226,5 +228,93 @@ public class Graficos2D {
         points.add(new Point(-y + center.x, x + center.y));
         points.add(new Point(y + center.x, -x + center.y));
         points.add(new Point(-y + center.x, -x + center.y));
+    }
+
+   public static ArrayList<Point> recorteRetas(Point a, Point b, int xL, int yB, int xR, int yT) {
+    ArrayList<Point> linePoints = new ArrayList<Point>();
+    char bits[][] = {"####".toCharArray(), "####".toCharArray()};
+    Point[] points = {a, b};
+    int i = 0;
+    for (Point point : points) {
+        int x = point.x;
+        int y = point.y;
+        bits[i][3] = (x < xL) ? '1' : '0';
+        bits[i][2] = (x > xR) ? '1' : '0';
+        bits[i][1] = (y < yB) ? '1' : '0';
+        bits[i][0] = (y > yT) ? '1' : '0';
+        i++;
+    }
+
+    boolean visA = false, visB = false;
+    if (Arrays.equals(bits[0], "0000".toCharArray())) {
+        visA = true;
+    }
+    if (Arrays.equals(bits[1], "0000".toCharArray())) {
+        visB = true;
+    }
+    if (visA && visB) {
+        return drawLineBresenham(a, b);
+    }
+
+    i = 0;
+    Point[] newPoints = {new Point(), new Point()};
+    char esq = bits[0][3];
+    char dir = bits[0][2];
+    char bot = bits[0][1];
+    char top = bits[0][0];
+
+    if (esq == '0' && dir == '0' && bot == '0' && top == '0') {
+        newPoints[0].setLocation(a);
+    } else {
+        double m = (double) (b.y - a.y) / (double) (b.x - a.x);
+        if (esq == '1') {
+            newPoints[0].setLocation(xL, (int) (a.y + m * (xL - a.x)));
+        } else if (dir == '1') {
+            newPoints[0].setLocation(xR, (int) (a.y + m * (xR - a.x)));
+        } else if (bot == '1') {
+            newPoints[0].setLocation((int) (a.x + (yB - a.y) / m), yB);
+        } else if (top == '1') {
+            newPoints[0].setLocation((int) (a.x + (yT - a.y) / m), yT);
+        }
+    }
+
+    esq = bits[1][3];
+    dir = bits[1][2];
+    bot = bits[1][1];
+    top = bits[1][0];
+
+    if (esq == '0' && dir == '0' && bot == '0' && top == '0') {
+        newPoints[1].setLocation(b);
+    } else {
+        double m = (double) (b.y - a.y) / (double) (b.x - a.x);
+        if (esq == '1') {
+            newPoints[1].setLocation(xL, (int) (a.y + m * (xL - a.x)));
+        } else if (dir == '1') {
+            newPoints[1].setLocation(xR, (int) (a.y + m * (xR - a.x)));
+        } else if (bot == '1') {
+            newPoints[1].setLocation((int) (a.x + (yB - a.y) / m), yB);
+        } else if (top == '1') {
+            newPoints[1].setLocation((int) (a.x + (yT - a.y) / m), yT);
+        }
+    }
+
+    if (!visA) {
+        linePoints = drawLineBresenham(b, newPoints[0]);
+    } else if (!visB) {
+        linePoints = drawLineBresenham(newPoints[1], a);
+    } else {
+        linePoints = drawLineBresenham(newPoints[0], newPoints[1]);
+    }
+    return linePoints;
+}
+
+
+    public static ArrayList<Point> rectangle(int xL, int yB, int xR, int yT) {
+        ArrayList<Point> points = new ArrayList();
+        points.addAll(drawLineBresenham(new Point(xL, yB), new Point(xR, yB)));
+        points.addAll(drawLineBresenham(new Point(xL, yT), new Point(xR, yT)));
+        points.addAll(drawLineBresenham(new Point(xL, yB), new Point(xL, yT)));
+        points.addAll(drawLineBresenham(new Point(xR, yB), new Point(xR, yT)));
+        return points;
     }
 }

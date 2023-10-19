@@ -48,6 +48,11 @@ public class DialogDesenhos extends javax.swing.JDialog {
                 panel.setSize(this.getSize());
                 this.add(panel);
             }
+            case "clipping" -> {
+                panel = new PanelClipping(100, 50, 350, 250);   
+                panel.setSize(this.getSize());
+                this.add(panel);
+            }
             default -> throw new AssertionError();
         }
     }

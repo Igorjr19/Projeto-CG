@@ -13,9 +13,9 @@ import model.Graficos2D;
  */
 public abstract class Panel2D extends javax.swing.JPanel {
 
-    ArrayList<Point> points;
-    Point p1;
-    Point p2;
+    protected ArrayList<Point> points;
+    protected Point p1;
+    protected Point p2;
     /**
      * Creates new form Panel2D
      */

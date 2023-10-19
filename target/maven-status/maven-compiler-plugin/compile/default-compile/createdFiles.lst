@@ -19,6 +19,7 @@ view\Panel2D$2.class
 view\DialogCasinha$10.class
 view\FrameInicial$5.class
 view\PanelLineLinear.class
+view\PanelClipping.class
 view\DialogCasinha$7.class
 view\DialogCasinha$13.class
 view\DialogCasinha$4.class
@@ -31,6 +32,7 @@ view\DialogRGBtoHSV$1.class
 view\DialogCasinha$1.class
 view\PanelCircleParametric.class
 view\DialogImagem$5.class
+view\FrameInicial$11.class
 view\DialogCasinha$5.class
 view\FrameInicial$6.class
 view\DialogImagem$2.class

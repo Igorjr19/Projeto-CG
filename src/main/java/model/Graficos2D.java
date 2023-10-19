@@ -190,7 +190,41 @@ public class Graficos2D {
 
     public static ArrayList<Point> drawCircleBresenham(Point a, Point b) {
         ArrayList<Point> linePoints = new ArrayList();
-        //TODO
+        int r = (int) Math.sqrt(Math.pow((b.x - a.x), 2) + Math.pow((b.y - a.y), 2));
+        int x = 0;
+        int y = r;
+        int h = 1 - r;
+        int dE = 3;
+        int dSE = -2 * r + 5;
+
+        addSymmetricPoints(linePoints, a, x, y);
+
+        while (x < y) {
+            if (h < 0) {
+                h = h + dE;
+                dE = dE + 2;
+                dSE = dSE + 2;
+            } else {
+                h = h + dSE;
+                dE = dE + 2;
+                dSE = dSE + 4;
+                y = y - 1;
+            }
+            x = x + 1;
+
+            addSymmetricPoints(linePoints, a, x, y);
+        }
         return linePoints;
+    }
+
+    private static void addSymmetricPoints(ArrayList<Point> points, Point center, int x, int y) {
+        points.add(new Point(x + center.x, y + center.y));
+        points.add(new Point(-x + center.x, y + center.y));
+        points.add(new Point(x + center.x, -y + center.y));
+        points.add(new Point(-x + center.x, -y + center.y));
+        points.add(new Point(y + center.x, x + center.y));
+        points.add(new Point(-y + center.x, x + center.y));
+        points.add(new Point(y + center.x, -x + center.y));
+        points.add(new Point(-y + center.x, -x + center.y));
     }
 }

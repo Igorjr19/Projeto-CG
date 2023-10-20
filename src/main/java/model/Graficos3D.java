@@ -23,4 +23,14 @@ public class Graficos3D extends Graficos2D {
         }
         return points;
     }
+    
+    public static ArrayList<Point> projecaoCavalera(){
+        ArrayList<Point> points = new ArrayList();
+        for (Ponto3D[] linha : casinha.linhas) {
+            int[] a = linha[0].projecaoCavalera();
+            int[] b = linha[1].projecaoCavalera();
+            points.addAll(drawLineBresenham(new Point(a[0], a[1]), new Point(b[0], b[1])));
+        }
+        return points;
+    }
 }

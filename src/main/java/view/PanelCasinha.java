@@ -12,7 +12,7 @@ public class PanelCasinha extends Panel2D {
 
     @Override
     public ArrayList<Point> desenhar(Point p1, Point p2) {
-        return Graficos3D.projecaoOrtogonal("z");
-    }
+        return Graficos3D.projecaoCavalera();
+        }
     
 }

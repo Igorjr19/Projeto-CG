@@ -1,30 +1,21 @@
-package View;
+package view;
 
-import com.formdev.flatlaf.FlatIntelliJLaf;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFileChooser;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import view.DialogDesenhos;
-import view.DialogImagem;
-import view.DialogRGBtoHSV;
 
 /**
  *
  * @author Lucas Ikeda e Igor Rodrigues
  */
-public class FrameInicial extends javax.swing.JFrame implements ActionListener {
+public class TelaInicial extends javax.swing.JFrame implements ActionListener {
     
     
     /**
      * Creates new form Screen
      */
-    public FrameInicial() {
+    public TelaInicial() {
         initComponents();
     }
 
@@ -267,48 +258,7 @@ public class FrameInicial extends javax.swing.JFrame implements ActionListener {
         clipping.setVisible(true);
     }//GEN-LAST:event_retaClippingActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogCasinha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogCasinha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogCasinha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogCasinha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    UIManager.setLookAndFeel(new FlatIntelliJLaf());
-                } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(FrameInicial.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                UIManager.getLookAndFeelDefaults().put("defaultFont", new Font("Comic Sans MS", Font.PLAIN, 14));
-                new FrameInicial().setVisible(true);
-            }
-
-        });
-    }
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem RGBtoHSL;
     private javax.swing.JMenuItem carregarIMG;
